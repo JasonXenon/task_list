@@ -1,11 +1,11 @@
 ﻿import React, { useState } from "react";
 
-function TaskList({ tasks }) {
-    const [checkedStates, setCheckedStates] = useState(tasks.map(() => false)); // Initialiser un tableau d'états
+function TaskList({ tasks, deleteTask }) {
+    const [checkedStates, setCheckedStates] = useState(tasks.map(() => false));
 
     const handleCheckboxChange = (index) => (event) => {
         const updatedStates = [...checkedStates];
-        updatedStates[index] = event.target.checked; // Met à jour l'état de la checkbox spécifique
+        updatedStates[index] = event.target.checked;
         setCheckedStates(updatedStates);
     };
 
@@ -23,10 +23,18 @@ function TaskList({ tasks }) {
                                 className="accent-blue-500"
                             />
                             <li
-                                className={`text-white ${checkedStates[index] ? "line-through text-green-300" : ""}`}
+                                className={`text-white ${
+                                    checkedStates[index] ? "line-through text-green-300" : ""
+                                }`}
                             >
                                 {task}
                             </li>
+                            <button
+                                onClick={() => deleteTask(task)}
+                                className="text-red-500 hover:text-red-700"
+                            >
+                                Vardumb sa gueule à la task 
+                            </button>
                         </div>
                     ))}
                 </ul>

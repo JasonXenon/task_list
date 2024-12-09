@@ -11,11 +11,18 @@ function App() {
         setTasks((prevTasks) => [...prevTasks, task]); // Ajoute la nouvelle tâche
     };
 
+    // Fonction pour supprimer une tâche
+    const deleteTask = (taskToDelete) => {
+        setTasks((prevTasks) =>
+            prevTasks.filter((task) => task !== taskToDelete)
+        );
+    };
+
     return (
         <div className="App">
             <header className="App-header">
                 <Form addTask={addTask} />
-                <List tasks={tasks} />
+                <List tasks={tasks} deleteTask={deleteTask} />
             </header>
         </div>
     );
