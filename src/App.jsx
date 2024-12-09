@@ -31,9 +31,9 @@ function App() {
         const newTaskValue = prompt("Nouvelle valeur de la tâche", taskToUpdate);
         if (newTaskValue) {
             setTasks((prevTasks) => {
-                const updatedTasks = [...prevTasks];
-                const taskIndex = updatedTasks.findIndex((task) => task === taskToUpdate);
-                updatedTasks[taskIndex] = newTaskValue;
+                const updatedTasks = [...prevTasks]; // Crée une copie du tableau de tâches
+                const taskIndex = updatedTasks.findIndex((task) => task === taskToUpdate); // Trouve l'index de la tâche à mettre à jour
+                updatedTasks[taskIndex] = newTaskValue; // Met à jour la tâche avec la valeur stockée dans newTaskValue
                 return updatedTasks;
             });
         }
