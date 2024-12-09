@@ -26,11 +26,25 @@ function App() {
         );
     };
 
+    //Fonction pour update une tâche
+    const updateTask = (taskToUpdate) => {
+        const newTaskValue = prompt("Nouvelle valeur de la tâche", taskToUpdate);
+        if (newTaskValue) {
+            setTasks((prevTasks) => {
+                const updatedTasks = [...prevTasks];
+                const taskIndex = updatedTasks.findIndex((task) => task === taskToUpdate);
+                updatedTasks[taskIndex] = newTaskValue;
+                return updatedTasks;
+            });
+        }
+    };
+
+    // Affichage de l'application
     return (
         <div className="App">
             <header className="App-header">
                 <Form addTask={addTask} />
-                <List tasks={tasks} deleteTask={deleteTask} />
+                <List tasks={tasks} deleteTask={deleteTask} updateTask={updateTask} />
             </header>
         </div>
     );

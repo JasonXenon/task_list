@@ -1,6 +1,6 @@
 ﻿import React, { useState } from "react";
 
-function TaskList({ tasks, deleteTask }) {
+function TaskList({ tasks, deleteTask, updateTask }) {
     const [checkedStates, setCheckedStates] = useState(tasks.map(() => false));
 
     const handleCheckboxChange = (index) => (event) => {
@@ -33,7 +33,13 @@ function TaskList({ tasks, deleteTask }) {
                                 onClick={() => deleteTask(task)}
                                 className="text-red-500 hover:text-red-700"
                             >
-                                Vardumb sa gueule à la task 
+                                Vardumb sa gueule à la task
+                            </button>
+                            <button
+                                onClick={() => updateTask(task)}
+                                className="text-green-500 hover:text-green-700"
+                            >
+                                Update la gueule à la task
                             </button>
                         </div>
                     ))}
